@@ -7,6 +7,17 @@ from sklearn.neighbors import KNeighborsClassifier    # KNN classifier
 import joblib                  # To save/load trained model, scaler, and label encoder
 import streamlit as st
 import os
+import requests
+
+url = "https://raw.githubusercontent.com/manishabajaj/Crop-Recommendation-System/main/Crop_recommendation.csv"
+file_path = "Crop_recommendation.csv"
+
+# Download CSV file
+r = requests.get(url)
+with open(file_path, "wb") as f:
+    f.write(r.content)
+
+print(f"Dataset downloaded to {file_path}")
 
 # Load dataset
 def load_data(path):
